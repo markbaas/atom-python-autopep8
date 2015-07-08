@@ -3,7 +3,7 @@
   "main": "./lib/index",
   "version": "0.0.1",
   "description": "Format python code using autopep8",
-  "repository": "https://github.com/bh/atom-python-autopep8",
+  "repository": "https://github.com/markbaas/atom-python-autopep8",
   "license": "MIT",
   "engines": {
     "atom": ">=0.185.0 <2.0.0"
