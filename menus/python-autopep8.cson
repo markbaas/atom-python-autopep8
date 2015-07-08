@@ -1,0 +1,16 @@
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      {
+        'label': 'Python Autopep8'
+        'submenu': [
+          {
+            'label': 'Format python code'
+            'command': 'python-autopep8:format'
+          }
+        ]
+      }
+    ]
+  }
+]

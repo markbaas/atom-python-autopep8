@@ -1,39 +1,29 @@
-PythonIsort = require './python-isort'
+PythonAutopep8 = require './python-autopep8'
 
 module.exports =
   config:
-    isortPath:
+    autopep8Path:
       type: 'string'
-      default: 'isort'
-    sortOnSave:
+      default: 'autopep8'
+    formatOnSave:
       type: 'boolean'
       default: false
-    checkOnSave:
-      type: 'boolean'
-      default: true
+    maxLineLength:
+      type: 'integer'
+      default: 100
 
   activate: ->
-    pi = new PythonIsort()
+    pi = new PythonAutopep8()
 
     atom.commands.add 'atom-workspace', 'pane:active-item-changed', ->
       pi.removeStatusbarItem()
 
-    atom.commands.add 'atom-workspace', 'python-isort:sortImports', ->
-      pi.sortImports()
+    atom.commands.add 'atom-workspace', 'python-autopep8:format', ->
+      pi.format()
 
-    atom.commands.add 'atom-workspace', 'python-isort:checkImports', ->
-      pi.checkImports()
-
-    atom.config.observe 'python-isort.sortOnSave', (value) ->
+    atom.config.observe 'python-autopep8.formatOnSave', (value) ->
       atom.workspace.observeTextEditors (editor) ->
         if value == true
-          editor._isortSort = editor.onDidSave -> pi.sortImports()
+          editor._autopep8Format = editor.onDidSave -> pi.format()
         else
-          editor._isortSort?.dispose()
-
-    atom.config.observe 'python-isort.checkOnSave', (value) ->
-      atom.workspace.observeTextEditors (editor) ->
-        if value == true
-          editor._isortCheck = editor.onDidSave -> pi.checkImports()
-        else
-          editor._isortCheck?.dispose()
+          editor._autopep8Format?.dispose()

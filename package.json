@@ -1,9 +1,9 @@
 {
-  "name": "python-isort",
+  "name": "python-autopep8",
   "main": "./lib/index",
   "version": "0.0.7",
-  "description": "Organize Python Imports using Isort",
-  "repository": "https://github.com/bh/atom-python-isort",
+  "description": "Format python code using autopep8",
+  "repository": "https://github.com/bh/atom-python-autopep8",
   "license": "MIT",
   "engines": {
     "atom": ">=0.185.0 <2.0.0"
