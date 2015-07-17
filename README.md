@@ -1,7 +1,8 @@
-## Python Autopep8 for Atom editor
+# Atom Python Autopep8
 
-Uses [Autopep8](https://github.com/markbaas/atom-python-autopep8) to format python code
+Uses [autopep8](https://github.com/hhatto/autopep8) installed to format python code according to pep8 guidelines.
+
 
 ### Install
 
-Make sure you have `autopep8` installed and the correct path to binary was set in the package config.
+Make sure to have [autopep8](https://github.com/hhatto/autopep8) installed. [autopep8](https://github.com/hhatto/autopep8) installed can be installed running `pip install autopep8`
