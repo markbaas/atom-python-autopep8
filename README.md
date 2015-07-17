@@ -5,4 +5,4 @@ Uses [autopep8](https://github.com/hhatto/autopep8) installed to format python c
 
 ### Install
 
-Make sure to have [autopep8](https://github.com/hhatto/autopep8) installed. [autopep8](https://github.com/hhatto/autopep8) installed can be installed running `pip install autopep8`
+Make sure to have [autopep8](https://github.com/hhatto/autopep8) installed. Install it by running `pip install autopep8`
