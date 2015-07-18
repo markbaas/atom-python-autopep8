@@ -1,7 +1,5 @@
-fs = require 'fs'
 $ = require 'jquery'
 process = require 'child_process'
-{BufferedProcess} = require 'atom'
 
 module.exports =
 class PythonAutopep8
@@ -41,30 +39,17 @@ class PythonAutopep8
     editor = atom.workspace.getActiveTextEditor()
     return editor.getPath()
 
-  runCommand: ->
-    filePath = @getFilePath()
-    maxLineLength = atom.config.get "python-autopep8.maxLineLength"
-    new Promise (resolve, reject) ->
-      data = null
-      process = new BufferedProcess
-        command: atom.config.get "python-autopep8.autopep8Path"
-        args: ["--max-line-length", maxLineLength, "-i", filePath]
-        stdout: (out) -> data = out
-        exit: =>
-          resolve data
-
-      process.onWillThrowError ({handle}) ->
-        handle()
-        resolve()
-
   format: ->
     if not @checkForPythonContext()
       return
 
-    editor = atom.workspace.getActiveTextEditor()
-    curpos = editor.getCursorBufferPosition()
-    self = this
-    @runCommand().then (data) ->
-      self.updateStatusbarText("√", false)
-      self.reload
-      editor.setCursorBufferPosition(curpos)
+    cmd = atom.config.get "python-autopep8.autopep8Path"
+    maxLineLength = atom.config.get "python-autopep8.maxLineLength"
+    params = ["--max-line-length", maxLineLength, "-i", @getFilePath()]
+
+    returnCode = process.spawnSync(cmd, params).status
+    if returnCode != 0
+      @updateStatusbarText("x", true)
+    else
+      @updateStatusbarText("√", false)
+      @reload
