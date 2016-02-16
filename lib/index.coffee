@@ -11,6 +11,12 @@ module.exports =
     maxLineLength:
       type: 'integer'
       default: 100
+    cmdLineOptions:
+      type: 'array'
+      default: []
+      description:
+          "Cmd line switches passed to autopep8 delimited by commas
+          (e.g. '-a, -a, --experimental')"
 
   activate: ->
     pi = new PythonAutopep8()
