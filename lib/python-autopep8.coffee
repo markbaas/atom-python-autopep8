@@ -45,7 +45,10 @@ class PythonAutopep8
 
     cmd = atom.config.get "python-autopep8.autopep8Path"
     maxLineLength = atom.config.get "python-autopep8.maxLineLength"
-    params = ["--max-line-length", maxLineLength, "-i", @getFilePath()]
+    cmdLineOptions = atom.config.get "python-autopep8.cmdLineOptions"
+    params = cmdLineOptions.concat [
+        "--max-line-length", maxLineLength, "-i", @getFilePath()
+    ]
 
     returnCode = process.spawnSync(cmd, params).status
     if returnCode != 0
