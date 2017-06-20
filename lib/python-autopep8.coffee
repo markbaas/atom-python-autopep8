@@ -8,7 +8,8 @@ class PythonAutopep8
     editor = atom.workspace.getActiveTextEditor()
     if not editor?
       return false
-    return editor.getGrammar().name == 'Python'
+    grammar = editor.getGrammar().name
+    return grammar == 'Python' or grammar == 'MagicPython'
 
   removeStatusbarItem: =>
     @statusBarTile?.destroy()
