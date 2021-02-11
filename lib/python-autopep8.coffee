@@ -8,8 +8,9 @@ class PythonAutopep8
     editor = atom.workspace.getActiveTextEditor()
     if not editor?
       return false
-    grammar = editor.getGrammar().name
-    return grammar == 'Python' or grammar == 'MagicPython'
+    grammarNames = atom.config.get "python-autopep8.grammars"
+    grammarName = editor.getGrammar().name
+    return grammarName in grammarNames
 
   removeStatusbarItem: =>
     @statusBarTile?.destroy()
@@ -42,6 +43,7 @@ class PythonAutopep8
 
   format: ->
     if not @checkForPythonContext()
+      @updateStatusbarText("x", true)
       return
 
     cmd = atom.config.get "python-autopep8.autopep8Path"

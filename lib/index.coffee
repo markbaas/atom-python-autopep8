@@ -11,6 +11,9 @@ module.exports =
     maxLineLength:
       type: 'integer'
       default: 100
+    grammars:
+      type: 'array'
+      default: ["Python"]
     cmdLineOptions:
       type: 'array'
       default: []
