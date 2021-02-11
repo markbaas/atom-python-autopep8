@@ -13,7 +13,7 @@ module.exports =
       default: 100
     grammars:
       type: 'array'
-      default: ["Python"]
+      default: ["Python", "MagicPython"]
     cmdLineOptions:
       type: 'array'
       default: []
